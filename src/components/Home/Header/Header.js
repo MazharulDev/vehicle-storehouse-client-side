@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import logo from '../../../images/logo.png'
+import auth from "../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 const Header = () => {
+    const [user, loading, error] = useAuthState(auth);
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className=" sticky top-0 shadow-md">
@@ -43,12 +46,19 @@ const Header = () => {
                                         Calendar
                                     </Link>
 
-                                    <Link
-                                        to="/"
+                                <>
+                                    {
+                                        user? <div>
+                                            <button className="hover:text-gray-600 text-sm font-medium">Sign Out</button>
+                                        </div> :
+                                        <Link
+                                        to="/login"
                                         className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Reports
+                                        Login
                                     </Link>
+                                    }
+                                </>
 
                                 </div>
                             </div>
