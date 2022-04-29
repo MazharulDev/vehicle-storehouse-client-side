@@ -9,7 +9,7 @@ import Loading from '../../Loading/Loading'
 const Login = () => {
     const location=useLocation();
     const navigate=useNavigate()
-    const [signInWithGoogle, userWithGoogle, loadingWithGoogle, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
     if(userWithGoogle){
         toast("Login Successfully")
     }
@@ -25,6 +25,9 @@ const Login = () => {
     }
     if(loadingWithGoogle){
         return <Loading></Loading>
+    }
+    if(errorWithGoogle){
+        toast(errorWithGoogle?.message)
     }
     return (
         <div>
