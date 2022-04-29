@@ -4,17 +4,23 @@ import { Link } from "react-router-dom";
 import logo from '../../../images/logo.png'
 import auth from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     const [isOpen, setIsOpen] = useState(false);
+    const handleSignOut=()=>{
+        signOut(auth);
+        toast("SignOut Successfully")
+    }
     return (
         <div className=" sticky top-0 shadow-md">
             <nav className="bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
-                            <div className="flex-shrink-0">
-                                <img src={logo} alt="" />
-                            </div>
+                        <div className="flex-shrink-0">
+                           <Link to='/'> <img src={logo} alt="" /></Link>
+                        </div>
                         <div className="flex items-center">
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
@@ -22,7 +28,7 @@ const Header = () => {
                                         to="/"
                                         className=" hover:text-gray-600 text-black px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Home 
+                                        Home
                                     </Link>
 
                                     <Link
@@ -33,32 +39,46 @@ const Header = () => {
                                     </Link>
 
                                     <Link
-                                        to="/"
+                                        to="/blogs"
                                         className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Projects
+                                        Blogs
                                     </Link>
 
-                                    <Link
-                                        to="/"
-                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Calendar
-                                    </Link>
-
-                                <>
-                                    {
-                                        user? <div>
-                                            <button className="hover:text-gray-600 text-sm font-medium">Sign Out</button>
-                                        </div> :
-                                        <Link
-                                        to="/login"
-                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Login
-                                    </Link>
-                                    }
-                                </>
+                                    <>
+                                        {
+                                            user ? <div>
+                                                 <Link
+                                                        to="/manageItems"
+                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
+                                                    >
+                                                        Manage Items
+                                                    </Link>
+                                                <Link
+                                                        to="/addItems"
+                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
+                                                    >
+                                                        Add Items
+                                                    </Link>
+                                                 <Link
+                                                        to="/myItems"
+                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
+                                                    >
+                                                        My items
+                                                    </Link>
+                                                <button onClick={handleSignOut} className="hover:text-gray-600 text-sm font-medium">Sign Out</button>
+                                            </div> :
+                                                <div>
+                                                    
+                                                    <Link
+                                                        to="/login"
+                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
+                                                    >
+                                                        Login
+                                                    </Link>
+                                                </div>
+                                        }
+                                    </>
 
                                 </div>
                             </div>
