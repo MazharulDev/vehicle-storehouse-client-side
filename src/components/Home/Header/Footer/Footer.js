@@ -36,11 +36,11 @@ const Footer = () => {
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Our Services</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Testimonials</Link>
                     </div>
-                    <div className='text-white col-span-2'>
+                    <div className='text-white col-span-2 mt-4 md:mt-0'>
                         <h2 className='text-xl mb-4'>Join our growing community</h2>
                         <div className='md:flex items-center gap-2'>
                             <Link to='/'>
-                            <button className='bg-gray-300 rounded-lg text-black sm:block sm:mb-2 md:mb-0 hover:bg-gray-600 hover:text-white duration-500'>
+                            <button className='bg-gray-300 rounded-lg text-black sm:block mb-2 md:mb-0 hover:bg-gray-600 hover:text-white duration-500'>
                                 <div className='flex items-center gap-4 p-2'>
                                     <BsApple className='text-4xl'></BsApple>
                                     <div>
