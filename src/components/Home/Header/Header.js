@@ -23,10 +23,10 @@ const Header = () => {
                                     </Link>
 
                                     <Link
-                                        to="/"
+                                        to="/inventory"
                                         className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Team
+                                        Inventory
                                     </Link>
 
                                     <Link
