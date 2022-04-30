@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import auth from '../../../firebase.init';
-import {useSignInWithGoogle} from 'react-firebase-hooks/auth'
+import {useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth'
 import { toast } from 'react-toastify';
 import Loading from '../../Loading/Loading'
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        userWithEmail,
+        loadingWithEmail,
+        errorWithEmail,
+      ] = useSignInWithEmailAndPassword(auth);
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const handleEmailChange=e=>{
+        const email=e.target.value;
+        setEmail(email)
+    }
+    const handlePasswordChange=e=>{
+        const password=e.target.value;
+        setPassword(password);
+    }
+    const handleSubmit=e=>{
+        e.preventDefault();
+        signInWithEmailAndPassword(email,password);
+    }
     const location=useLocation();
     const navigate=useNavigate()
+
     const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
-    if(userWithGoogle){
+    if(userWithGoogle || userWithEmail){
         toast("Login Successfully")
     }
     const handleGoogleSignIn=()=>{
@@ -18,12 +39,12 @@ const Login = () => {
     }
 
     let from=location.state?.from?.pathname||'/';
-    if(userWithGoogle){
+    if(userWithGoogle || userWithEmail){
         setTimeout(() => {
             navigate(from,{replace:true});
         }, 1500);
     }
-    if(loadingWithGoogle){
+    if(loadingWithGoogle || loadingWithEmail){
         return <Loading></Loading>
     }
     if(errorWithGoogle){
@@ -35,10 +56,10 @@ const Login = () => {
             <div className='mt-4 w-2/5 mx-auto'>
                 <div>
                     <h2 className='text-4xl text-center text-slate-600'>Login</h2>
-                    <form className='mt-5'>
-                        <input className='px-3 py-1 bg-gray-100 border rounded w-full' type="email" name="email" placeholder='Email' required/>
+                    <form onSubmit={handleSubmit} className='mt-5'>
+                        <input onChange={handleEmailChange} className='px-3 py-1 bg-gray-100 border rounded w-full' type="email" name="email" placeholder='Email' required/>
                         <br />
-                        <input className='px-3 py-1 bg-gray-100 my-2 border rounded w-full' type="password" name="password" placeholder='Password' required />
+                        <input onChange={handlePasswordChange} className='px-3 py-1 bg-gray-100 my-2 border rounded w-full' type="password" name="password" placeholder='Password' required />
                         <br />
                         <input className='px-3 py-1 bg-gray-300 hover:bg-gray-400 cursor-pointer rounded-md w-full' type="submit" value="Login" />
                         <h2 className='my-3'><Link className='text-blue-600 hover:underline' to='/forgotPassword'>Forgot password?</Link></h2>
