@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import Header from '../../Home/Header/Header';
 
 const AddItems = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         const url = `https://vehicle-storehouse.herokuapp.com/item`
         fetch(url, {
@@ -16,6 +17,8 @@ const AddItems = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                toast("Car added successfully")
+                reset();
             })
     }
     return (

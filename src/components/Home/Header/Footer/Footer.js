@@ -7,14 +7,14 @@ const Footer = () => {
     return (
         <div className='bg-gray-900'>
             <div>
-                <div className='px-12 py-8'>
+                <div className='container mx-auto px-12 py-8'>
                     <img src={logo} alt="" />
                 </div>
                 <div className='border-b-2 border-gray-800'>
 
                 </div>
 
-                <div className='px-12 py-8 md:grid grid-cols-5'>
+                <div className='container mx-auto px-12 py-8 md:grid grid-cols-5'>
                     <div className='text-white col-span-1 sm:mt-4 md:mt-0'>
                         <h2 className='text-xl mb-4'>Information</h2>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Our Contact</Link>
