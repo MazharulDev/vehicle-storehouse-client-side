@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import useLoadData from '../../../hooks/useLoadData';
 import Item from '../Item/Item';
 
 const Items = () => {
-    const [items,setItems]=useState([]);
-    useEffect(()=>{
-        fetch('https://vehicle-storehouse.herokuapp.com/item')
-        .then(res=>res.json())
-        .then(data=>setItems(data))
-    },[])
+    const [items]=useLoadData()
     return (
         <div className='bg-gray-100'>
             <h2 className='text-center text-4xl py-5'>Car Collection</h2>
             <div className='container md:grid grid-cols-3 gap-4 w-fit mx-auto p-12'>
             {
-                items.map(item=><Item key={item._id} item={item}></Item>)
+                items.slice(0,6).map(item=><Item key={item._id} item={item}></Item>)
             }
             </div>
             
