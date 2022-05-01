@@ -32,13 +32,6 @@ const Header = () => {
                                     </Link>
 
                                     <Link
-                                        to="/inventory"
-                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Inventory
-                                    </Link>
-
-                                    <Link
                                         to="/blogs"
                                         className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
                                     >
@@ -145,36 +138,56 @@ const Header = () => {
                                     to="/"
                                     className="hover:text-gray-600 text-black block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Dashboard
+                                    Home 
+                                </Link>
+                                <Link
+                                    to="/blogs"
+                                    className="hover:text-gray-600 text-black block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    Blogs 
+                                </Link>
+
+                                <>
+                                {
+                                    user? <div>
+
+<Link
+                                    to="/manageItems"
+                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    Manage Items
                                 </Link>
 
                                 <Link
-                                    to="/"
+                                    to="/addItems"
                                     className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Team
+                                    Add Items
                                 </Link>
 
                                 <Link
-                                    to="/"
+                                    to="/myItems"
                                     className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Projects
+                                    My Items
                                 </Link>
+                                <button onClick={handleSignOut} className="hover:text-gray-600 text-sm font-medium px-3">Sign Out</button>
 
-                                <Link
-                                    to="/"
+                                    </div>
+                                    :
+                                    <div>
+                                        <Link
+                                    to="/login"
                                     className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Calendar
+                                    Login
                                 </Link>
+                                    </div>
+                                }
+                                
+                                </>
 
-                                <Link
-                                    to="/"
-                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Reports
-                                </Link>
+                                
                             </div>
                         </div>
                     )}
