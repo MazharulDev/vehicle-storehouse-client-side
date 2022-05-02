@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 import Header from '../../Home/Header/Header';
 
 const AddItems = () => {
+    const [user]=useAuthState(auth);
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         const url = `https://vehicle-storehouse.herokuapp.com/item`
@@ -32,7 +35,7 @@ const AddItems = () => {
                 <textarea className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("des", { required: true})} placeholder="Enter Car description"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' type="number" {...register("quantity",)} placeholder="Enter Car quantity"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("subName", { required: true})} placeholder="Enter Car Supplier Name"/>
-                <input className='border px-3 py-1 mb-3 w-full bg-gray-50' type="email" {...register("email", { required: true})} placeholder="Enter your Email"/>
+                <input className='border px-3 py-1 mb-3 w-full bg-gray-50' value={user?.email} type="email" {...register("email", { required: true})} placeholder="Enter your Email"/>
                 <input className='px-3 py-1 bg-gray-300 hover:bg-gray-400 cursor-pointer rounded-md w-full' type="submit" />
             </form>
         </div>
