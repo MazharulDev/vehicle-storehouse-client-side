@@ -10,6 +10,15 @@ const Inventory = () => {
     const { id } = useParams();
     const [item, setItem] = useState({});
     const { name, img, des, price, quantity, subName } = item;
+    const [upCount,setUpCount]=useState(quantity);
+    useEffect(()=>{
+        setUpCount(quantity)
+    },[quantity])
+
+    useEffect(()=>{
+        console.log(upCount);
+    },[upCount])
+
     useEffect(() => {
         const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
         fetch(url)
@@ -19,32 +28,39 @@ const Inventory = () => {
     
     const handleQuantityChange=e=>{
         const quantityNumber=e.target.value;
-        setQuantityNumber(parseInt(quantity)+parseInt(quantityNumber));
-    }
-
-    const handleAddQuantity=()=>{
-        const updateQuantity={quantityNumber};
-        console.log(updateQuantity);
-        //send data to the server
-        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
-        fetch(url,{
-            method:'PUT',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(updateQuantity)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log('success',data);
-            toast('Quantity added');
-        })
+        setQuantityNumber(quantityNumber);
     }
     
-    const deliveredQuantity=parseInt(quantity)-parseInt(1);
+    const handleAddQuantity=()=>{
+        setUpCount(parseInt(upCount)+parseInt(quantityNumber))
+        const updateQuantity={upCount};
+        console.log(updateQuantity);
+        
+        //send data to the server
+        // const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        // fetch(url,{
+        //     method:'PUT',
+        //     headers:{
+        //         'content-type':'application/json'
+        //     },
+        //     body:JSON.stringify(updateQuantity)
+        // })
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     console.log('success',data);
+        //     toast('Quantity added');
+            
+        //     // setInterval(() => {
+        //     //     window.location.reload();
+        //     // }, 1500);
+        // })
+    }
+    
+   
 
     const handleDelivered=()=>{
-        const updateDelivery={deliveredQuantity};
+        setUpCount(+upCount-1)
+        const updateDelivery={upCount}
         console.log(updateDelivery);
         //send data to the server
         // const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
@@ -68,7 +84,7 @@ const Inventory = () => {
                 <img className='w-full mx-auto' src={img} alt="" />
                 <h2 className='text-xl my-5 text-blue-500 font-semibold'>{name}</h2>
                 <div className='flex items-center justify-between my-3'>
-                    <h5 className='text-lg'>Quantity: {quantity}</h5>
+                    <h5 className='text-lg'>Quantity: {upCount}</h5>
                     <div className='flex items-center gap-2'>
                         <BsFillPersonFill className='font-bold text-lg'></BsFillPersonFill>
                         <h3 className='text-lg font-bold'>{subName}</h3>
