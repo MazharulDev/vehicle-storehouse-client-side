@@ -1,4 +1,5 @@
 import React from 'react';
+import NewsLetter from '../../pages/NewsLetter/NewsLetter';
 import Banner from '../Banner/Banner';
 import Footer from '../Header/Footer/Footer';
 import Header from '../Header/Header';
@@ -10,6 +11,7 @@ const Home = () => {
             <Header/>
             <Banner/>
             <Items/>
+            <NewsLetter/>
             <Footer/>
         </div>
     );

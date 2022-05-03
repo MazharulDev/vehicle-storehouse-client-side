@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../../../images/logo.png'
 import auth from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -18,8 +18,8 @@ const Header = () => {
         return <Loading></Loading>
     }
     return (
-        <div className=" sticky top-0 shadow-md">
-            <nav className="bg-white">
+        <div>
+            <nav className="bg-transparent">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex-shrink-0">

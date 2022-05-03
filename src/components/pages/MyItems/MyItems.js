@@ -39,7 +39,7 @@ const MyItems = () => {
             <Link to='/addItems' className='flex justify-center'>
                 <button className='px-2 py-1 bg-gray-300 rounded hover:bg-gray-400'>Add New Item</button>
             </Link>
-            <div className='container md:grid grid-cols-3 gap-4 w-fit mx-auto p-12'>
+            <div className='container md:grid grid-cols-3 gap-4 w-full mx-auto p-12'>
             {
                 items.map(item=><MyItem key={item._id} item={item} handleDelete={handleDelete}></MyItem>)
             }

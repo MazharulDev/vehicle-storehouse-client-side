@@ -11,6 +11,7 @@ const Inventory = () => {
     const [item, setItem] = useState({});
     const { name, img, des, price, quantity, subName } = item;
     const [upCount,setUpCount]=useState(quantity);
+    //quantity not found fix
     useEffect(()=>{
         setUpCount(quantity)
     },[quantity])
@@ -24,16 +25,12 @@ const Inventory = () => {
     
     const handleQuantityChange=e=>{
         const quantityNumber=e.target.value;
-        setQuantityNumber(quantityNumber);
-        
+        setQuantityNumber(quantityNumber);   
     }
-    
     const handleAddQuantity=()=>{
         let count=parseInt(upCount)+parseInt(quantityNumber)
         setUpCount(parseInt(upCount)+parseInt(quantityNumber))
         const updateQuantity={count};
-        console.log(updateQuantity);
-        
         //send data to the server
         const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
         fetch(url,{
@@ -46,17 +43,16 @@ const Inventory = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log('success',data);
-            toast('Quantity added');
-            
+            toast.success('Quantity added');
             
         })
+        setQuantityNumber("")
     }
 
     const handleDelivered=()=>{
         setUpCount(+upCount-1)
         const count=parseInt(upCount)-parseInt(1)
         const updateDelivery={count}
-        console.log(updateDelivery);
         //send data to the server
         const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
         fetch(url,{

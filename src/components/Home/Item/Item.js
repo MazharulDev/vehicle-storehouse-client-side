@@ -5,7 +5,7 @@ const Item = ({ item }) => {
     const {_id, name, img, des, price, quantity, subName } = item;
     return (
         <div className=' p-8 shadow hover:shadow-xl rounded-md bg-white'>
-            <img className=' hover:scale-110 duration-200' src={img} alt="" />
+            <img className=' hover:scale-110 duration-500' src={img} alt="" />
             <h2 className='text-xl my-5 text-blue-500 font-semibold'>{name}</h2>
             <div className='flex items-center justify-between my-3'>
                 <h5 className='text-lg'>Quantity: {quantity}</h5>
@@ -18,7 +18,7 @@ const Item = ({ item }) => {
 
             <p className='text-lg font-bold my-2'>${price}</p>
             <Link to={`/inventory/${_id}`} className='w-16'>
-                <button className=' px-3 py-1 bg-gray-300 hover:bg-gray-400 rounded mt-5'>Update</button>
+                <button className=' px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 hover:scale-105'>Update</button>
             </Link>
         </div>
     );

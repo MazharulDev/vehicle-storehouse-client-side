@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         }
         const handleResetBtn=()=>{
             sendPasswordResetEmail(email);
-            toast("Reset link send successfully")
+            toast.success("Reset link send successfully")
             email.target.reset();
         }
         if(error){

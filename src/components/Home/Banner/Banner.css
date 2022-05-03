@@ -1,0 +1,6 @@
+.bg-img-banner{
+    background-image: url("../../../images/banner-img.png");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
