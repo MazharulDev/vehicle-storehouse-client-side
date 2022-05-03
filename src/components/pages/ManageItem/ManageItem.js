@@ -5,7 +5,7 @@ const ManageItem = ({item,handleDelete}) => {
     
     const {_id, name, img, des, price, quantity, subName } = item;
     return (
-        <div className=' p-8 shadow hover:shadow-xl rounded-md bg-white'>
+        <div className=' p-8 shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0'>
         <img className=' hover:scale-110 duration-200' src={img} alt="" />
         <h2 className='text-xl my-5 text-blue-500 font-semibold'>{name}</h2>
         <div className='flex items-center justify-between my-3'>
