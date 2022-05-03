@@ -15,10 +15,6 @@ const Inventory = () => {
         setUpCount(quantity)
     },[quantity])
 
-    useEffect(()=>{
-        console.log(upCount);
-    },[upCount])
-
     useEffect(() => {
         const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
         fetch(url)
@@ -29,53 +25,52 @@ const Inventory = () => {
     const handleQuantityChange=e=>{
         const quantityNumber=e.target.value;
         setQuantityNumber(quantityNumber);
+        
     }
     
     const handleAddQuantity=()=>{
+        let count=parseInt(upCount)+parseInt(quantityNumber)
         setUpCount(parseInt(upCount)+parseInt(quantityNumber))
-        const updateQuantity={upCount};
+        const updateQuantity={count};
         console.log(updateQuantity);
         
         //send data to the server
-        // const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
-        // fetch(url,{
-        //     method:'PUT',
-        //     headers:{
-        //         'content-type':'application/json'
-        //     },
-        //     body:JSON.stringify(updateQuantity)
-        // })
-        // .then(res=>res.json())
-        // .then(data=>{
-        //     console.log('success',data);
-        //     toast('Quantity added');
+        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        fetch(url,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(updateQuantity)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log('success',data);
+            toast('Quantity added');
             
-        //     // setInterval(() => {
-        //     //     window.location.reload();
-        //     // }, 1500);
-        // })
+            
+        })
     }
-    
-   
 
     const handleDelivered=()=>{
         setUpCount(+upCount-1)
-        const updateDelivery={upCount}
+        const count=parseInt(upCount)-parseInt(1)
+        const updateDelivery={count}
         console.log(updateDelivery);
         //send data to the server
-        // const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
-        // fetch(url,{
-        //     method:'PUT',
-        //     headers:{
-        //         'content-type':'application/json'
-        //     },
-        //     body:JSON.stringify(updateDelivery)
-        // })
-        // .then(res=>res.json())
-        // .then(data=>{
-        //     console.log('success',data);
-        //     toast('Delivered');
-        // })
+        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        fetch(url,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(updateDelivery)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log('success',data);
+            toast('Delivered');
+        })
     }
     return (
         <div>

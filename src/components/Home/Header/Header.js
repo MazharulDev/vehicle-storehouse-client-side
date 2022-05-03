@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../../images/logo.png'
 import auth from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import Loading from "../../Loading/Loading";
 const Header = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [isOpen, setIsOpen] = useState(false);
     const handleSignOut=()=>{
         signOut(auth);
         toast("SignOut Successfully")
+    }
+    if(loading){
+        return <Loading></Loading>
     }
     return (
         <div className=" sticky top-0 shadow-md">
