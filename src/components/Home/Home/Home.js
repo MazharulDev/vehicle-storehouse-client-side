@@ -14,7 +14,6 @@ const Home = () => {
         <div>
             <Header/>
             <Banner/>
-            
             <Items/>
             <BgItem/>
             <CountSection/>

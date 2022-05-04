@@ -36,7 +36,7 @@ const AddItems = () => {
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' type="number" {...register("quantity",)} placeholder="Enter Car quantity"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("subName", { required: true})} placeholder="Enter Car Supplier Name"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' value={user?.email} type="email" {...register("email", { required: true})} placeholder="Enter your Email"/>
-                <input className='px-3 py-1 bg-gray-300 hover:bg-gray-400 cursor-pointer rounded-md w-full' type="submit" />
+                <input className='px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white cursor-pointer rounded-md w-full' type="submit" />
             </form>
         </div>
     );
