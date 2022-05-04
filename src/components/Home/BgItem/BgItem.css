@@ -1,0 +1,6 @@
+.bg-item-down{
+    background-image: url("../../../images/fill-bg-2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
