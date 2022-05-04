@@ -12,7 +12,7 @@ const NewsLetter = () => {
         
     }
     return (
-        <div className='my-5'>
+        <div className='mt-5'>
             <div className='h-64 flex items-center justify-center bg-img-news'>
             <div className='md:flex items-center justify-center gap-3 bg-text'>
                 <h2 className='text-5xl text-center text-white mb-6 md:mb-0'>Newsletter</h2>
