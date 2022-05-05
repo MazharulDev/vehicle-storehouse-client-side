@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         <div>
             <SimpleHeader />
             <h2 className='text-center text-gray-500 text-4xl my-5'>Reset Password</h2>
-            <div className='w-2/5 mx-auto mt-5'>
+            <div className='w-4/5 md:w-2/5 mx-auto mt-5'>
 
                 <input onChange={handleEmailChange} className='w-full border px-3 py-1 bg-gray-100' type="email" name="email" placeholder='Enter Email' />
                 <button onClick={handleResetBtn} className='mt-5 px-3 py-1 bg-gray-300 hover:bg-gray-400 rounded-md'>

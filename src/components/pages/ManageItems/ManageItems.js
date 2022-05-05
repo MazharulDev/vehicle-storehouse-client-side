@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useLoadData from '../../../hooks/useLoadData';
-import Header from '../../Home/Header/Header';
+import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import ManageItem from '../ManageItem/ManageItem';
 
 const ManageItems = () => {
@@ -26,7 +26,7 @@ const ManageItems = () => {
     
     return (
         <div className='bg-gray-100'>
-            <Header/>
+            <SimpleHeader/>
             <div className='flex justify-center'>
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-4'>Manage Items</h2>
             </div>

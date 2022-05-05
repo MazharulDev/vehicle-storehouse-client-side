@@ -1,6 +1,7 @@
 .bg-img-banner{
-    background-image: url("../../../images/banner-img.png");
+    background-image: url("../../../images/car-count.jpg");
     background-position: center;
     background-size: cover;
     height: 100%;
+    background-attachment: fixed;
 }

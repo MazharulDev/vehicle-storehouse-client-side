@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { Link, useParams } from 'react-router-dom';
-import Header from '../../Home/Header/Header';
 import { toast } from 'react-toastify';
+import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 
 const Inventory = () => {
     const { id } = useParams();
@@ -68,8 +68,8 @@ const Inventory = () => {
     }
     return (
         <div>
-            <Header></Header>
-            <div className='w-3/5 mx-auto p-8 shadow hover:shadow-xl rounded-md bg-white mt-3'>
+            <SimpleHeader/>
+            <div className='w-4/5 md:w-2/5 mx-auto p-8 shadow hover:shadow-xl rounded-md bg-white mt-3'>
                 <img className='w-full mx-auto' src={img} alt="" />
                 <h2 className='text-xl my-5 text-blue-500 font-semibold'>{name}</h2>
                 <div className='flex items-center justify-between my-3'>

@@ -6,13 +6,12 @@ import BgItem from '../BgItem/BgItem';
 import Choose from '../Choose/Choose';
 import CountSection from '../CountSection/CountSection';
 import Footer from '../Header/Footer/Footer';
-import Header from '../Header/Header';
 import Items from '../Items/Items';
 
 const Home = () => {
     return (
         <div>
-            <Header/>
+            
             <Banner/>
             <Items/>
             <BgItem/>

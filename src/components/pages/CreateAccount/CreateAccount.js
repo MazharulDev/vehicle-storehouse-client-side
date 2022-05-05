@@ -82,7 +82,7 @@ const CreateAccount = () => {
     return (
         <div>
             <SimpleHeader />
-            <div className='mt-4 w-2/5 mx-auto'>
+            <div className='mt-4 w-4/5 md:w-2/5 mx-auto'>
                 <h2 className='text-4xl text-center my-5'>Create an account</h2>
                 <form onSubmit={handleSubmit}>
                     <input onChange={handleNameChange} className='border px-3 py-1 mb-3 w-full' type="text" name="name" placeholder='Enter Your full name' required />

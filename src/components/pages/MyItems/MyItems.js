@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import Header from '../../Home/Header/Header';
+import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import MyItem from '../MyItem/MyItem';
 
 const MyItems = () => {
@@ -34,7 +34,7 @@ const MyItems = () => {
 
     return (
         <div className='bg-gray-100'>
-            <Header/>
+            <SimpleHeader/>
             <div className='flex justify-center'>
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-4'>My Items</h2>
             </div>

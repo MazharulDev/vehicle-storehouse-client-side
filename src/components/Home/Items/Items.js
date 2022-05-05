@@ -4,7 +4,7 @@ import Item from '../Item/Item';
 const Items = () => {
     const [items] = useLoadData()
     return (
-        <div className='bg-gray-100'>
+        <div id='visit' className='bg-gray-100'>
             <div className='flex justify-center'>
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold'>Car Collection</h2>
             </div>

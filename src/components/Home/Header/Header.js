@@ -1,203 +1,67 @@
 import React, { useState } from "react";
-import { Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
-import logo from '../../../images/logo.png'
-import auth from "../../../firebase.init";
+import {BiMenuAltRight} from 'react-icons/bi'
+import {AiOutlineCloseCircle} from 'react-icons/ai';
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import {FaCarSide} from 'react-icons/fa';
+import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
+
 const Header = () => {
+    const [openMenu, setOpenMenu] = useState(false);
+    const path = useNavigate();
     const [user, loading] = useAuthState(auth);
-    const [isOpen, setIsOpen] = useState(false);
-    const handleSignOut=()=>{
-        signOut(auth);
-        toast("SignOut Successfully")
+    if (loading) {
+        return <Loading></Loading>;
     }
-    if(loading){
-        return <Loading></Loading>
-    }
+
+    const handleSignOut = () => {
+        signOut(auth).then((user) => {
+            if (!user) {
+                toast("Sign Out successfully");
+            }
+        });
+    };
     return (
-        <div>
-            <nav className="bg-transparent">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
-                        <div className="flex-shrink-0">
-                           <Link to='/'> <img src={logo} alt="" /></Link>
-                        </div>
-                        <div className="flex items-center">
-                            <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4">
-                                    <Link
-                                        to="/"
-                                        className=" hover:text-gray-600 text-black px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Home
-                                    </Link>
-
-                                    <Link
-                                        to="/blogs"
-                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Blogs
-                                    </Link>
-
-                                    <>
-                                        {
-                                            user ? <div>
-                                                 <Link
-                                                        to="/manageItems"
-                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                                    >
-                                                        Manage Items
-                                                    </Link>
-                                                <Link
-                                                        to="/addItems"
-                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                                    >
-                                                        Add Items
-                                                    </Link>
-                                                 <Link
-                                                        to="/myItems"
-                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                                    >
-                                                        My items
-                                                    </Link>
-                                                <button onClick={handleSignOut} className="hover:text-gray-600 text-sm font-medium">Sign Out</button>
-                                            </div> :
-                                                <div>
-                                                    
-                                                    <Link
-                                                        to="/login"
-                                                        className="text-black hover:text-gray-600  px-3 py-2 rounded-md text-sm font-medium"
-                                                    >
-                                                        Login
-                                                    </Link>
-                                                </div>
-                                        }
-                                    </>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div className="-mr-2 flex md:hidden">
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                type="button"
-                                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400  hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                aria-controls="mobile-menu"
-                                aria-expanded="false"
-                            >
-                                <span className="sr-only">Open main menu</span>
-                                {!isOpen ? (
-                                    <svg
-                                        className="block h-6 w-6"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M4 6h16M4 12h16M4 18h16"
-                                        />
-                                    </svg>
-                                ) : (
-                                    <svg
-                                        className="block h-6 w-6"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                )}
-                            </button>
-                        </div>
+        <section className='container mx-auto py-5 px-4 md:px-0'>
+            <nav className="lg:flex block lg:items-center lg:justify-between">
+                <div className="flex items-center justify-between lg:mb-0 mb-3">
+                    <h2
+                        className="md:text-3xl text-2xl cursor-pointer flex items-center gap-2"
+                        onClick={() => path("/")}
+                    >
+                        <FaCarSide className="text-white" /> <span className="text-white font-bold">vehicle-storehouse</span>
+                    </h2>
+                    <div className="lg:hidden text-3xl" onClick={() => setOpenMenu(!openMenu)}>
+                        {openMenu ? <AiOutlineCloseCircle className="text-white" /> : <BiMenuAltRight className="text-white" />}
                     </div>
                 </div>
-                <Transition
-                    show={isOpen}
-                    enter="transition ease-out duration-100 transform"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="transition ease-in duration-75 transform"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
+                <ul
+                    className={`lg:!flex text-white gap-4 lg:items-center lg:bg-transparent bg-slate-700 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-left ${openMenu ? "flex text-white" : "hidden"
+                        }`}
                 >
-                    {(ref) => (
-                        <div className="md:hidden" id="mobile-menu">
-                            <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                                <Link
-                                    to="/"
-                                    className="hover:text-gray-600 text-black block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Home 
-                                </Link>
-                                <Link
-                                    to="/blogs"
-                                    className="hover:text-gray-600 text-black block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Blogs 
-                                </Link>
-
-                                <>
-                                {
-                                    user? <div>
-
-<Link
-                                    to="/manageItems"
-                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Manage Items
-                                </Link>
-
-                                <Link
-                                    to="/addItems"
-                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Add Items
-                                </Link>
-
-                                <Link
-                                    to="/myItems"
-                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    My Items
-                                </Link>
-                                <button onClick={handleSignOut} className="hover:text-gray-600 text-sm font-medium px-3">Sign Out</button>
-
-                                    </div>
-                                    :
-                                    <div>
-                                        <Link
-                                    to="/login"
-                                    className="text-black hover:text-gray-600  block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Login
-                                </Link>
-                                    </div>
-                                }
-                                
-                                </>
-
-                                
-                            </div>
+                    <Link to="/">Home</Link>
+                    <Link to="/blogs">Blogs</Link>
+                    
+                    {user ? (
+                        <div className="flex lg:flex-row flex-col gap-4">
+                            <Link to="/addItems">Add Items</Link>
+                            <Link to="/manageItems">Manage Items</Link>
+                            <Link to="/myItems">My Items</Link>
+                            <button onClick={handleSignOut}>
+                                logout
+                            </button>
                         </div>
+                    ) : (
+                        <Link to='/login'>
+                            Login
+                        </Link>
                     )}
-                </Transition>
+                </ul>
             </nav>
-        </div>
+        </section>
     );
 };
 
