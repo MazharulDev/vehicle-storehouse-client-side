@@ -35,9 +35,11 @@ const MyItems = () => {
     return (
         <div className='bg-gray-100'>
             <Header/>
-            <h2 className='text-center text-4xl py-5'>My Items</h2>
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-4'>My Items</h2>
+            </div>
             <Link to='/addItems' className='flex justify-center'>
-                <button className='px-2 py-1 bg-gray-300 rounded hover:bg-gray-400'>Add New Item</button>
+                <button className='px-2 py-1 bg-transparent rounded border-2 border-blue-500 hover:bg-blue-500 hover:text-white duration-200 hover:scale-105'>Add New Item</button>
             </Link>
             <div className='container md:grid grid-cols-3 gap-4 w-full mx-auto p-12'>
             {

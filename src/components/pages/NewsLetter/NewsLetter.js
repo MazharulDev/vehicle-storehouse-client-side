@@ -15,7 +15,7 @@ const NewsLetter = () => {
                 <h2 className='text-5xl text-center text-white mb-6 md:mb-0'>Newsletter</h2>
                 <form onSubmit={handleSignUpBtn}>
                     <input className='px-5 py-3 border rounded-lg mb-4 md:mb-0' type="email" name="email" placeholder='Type your email' />
-                    <input className='px-5 py-3 rounded-lg bg-slate-300 text-black ml-3 hover:bg-gray-500 hover:text-white duration-200' type="submit" value="Sign Up" />
+                    <input className='px-5 py-3 rounded-lg bg-transparent border-2 border-blue-500  ml-3 hover:bg-blue-500 hover:text-white duration-200 cursor-pointer' type="submit" value="Sign Up" />
                 </form>
             </div>
             </div>

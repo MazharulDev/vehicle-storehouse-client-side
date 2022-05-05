@@ -27,7 +27,9 @@ const AddItems = () => {
     return (
         <div>
             <Header />
-            <h2 className='text-center my-5 text-4xl'>Add item</h2>
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-4'>Add Items</h2>
+            </div>
             <form className='w-3/5 mx-auto flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("name", { required: true})} placeholder="Enter Car Name"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("img", { required: true})} placeholder="Enter Image link"/>
