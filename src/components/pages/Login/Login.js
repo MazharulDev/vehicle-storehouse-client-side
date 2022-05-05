@@ -23,23 +23,37 @@ const Login = () => {
         const password=e.target.value;
         setPassword(password);
     }
+    const location=useLocation();
+    const navigate=useNavigate();
+    let from=location.state?.from?.pathname||'/';
+    
+
     const handleSubmit=e=>{
         e.preventDefault();
         signInWithEmailAndPassword(email,password);
-    }
-    const location=useLocation();
-    const navigate=useNavigate()
 
+        const url = `https://vehicle-storehouse.herokuapp.com/login`
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify({email})
+        })
+            .then(res => res.json())
+            .then(result => {
+                localStorage.setItem('accessToken',result.accessToken);
+                navigate(from,{replace:true});
+            })
+    }
     const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
     if(userWithGoogle || userWithEmail){
-        toast("Login Successfully")
+        toast.success("Login Successfully")
     }
     const handleGoogleSignIn=()=>{
         signInWithGoogle();
     }
-
-    let from=location.state?.from?.pathname||'/';
-    if(userWithGoogle || userWithEmail){
+    if(userWithGoogle){
         setTimeout(() => {
             navigate(from,{replace:true});
         }, 1500);
