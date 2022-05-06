@@ -10,7 +10,7 @@ const Banner = () => {
                 <div>
                     <h2 className='text-3xl md:text-6xl font-bold font-serif mb-8 text-white'>Find Your Next Car at Vehicle storehouse</h2>
                     <p className='text-lg text-white'>Allow us to guide you through the innovative stress free approach in finding your dream car.</p>
-                    <a href='#visit' className='inline-block px-14 mt-10 transition-all py-3 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-blue-200 bg-blue-600'>Visit</a>
+                    <a href='#visit' className='inline-block px-14 mt-10 transition-all py-3 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-blue-200 bg-blue-600 uppercase'>Learn More</a>
                 </div>
                 
             </div>

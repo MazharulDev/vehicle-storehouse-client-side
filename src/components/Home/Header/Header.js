@@ -32,25 +32,25 @@ const Header = () => {
                         className="md:text-3xl text-2xl cursor-pointer flex items-center gap-2"
                         onClick={() => path("/")}
                     >
-                        <FaCarSide className="text-white" /> <span className="text-white font-bold">vehicle-storehouse</span>
+                        <FaCarSide className="text-blue-600" /> <span className="text-blue-600 font-bold">vehicle-storehouse</span>
                     </h2>
                     <div className="lg:hidden text-3xl" onClick={() => setOpenMenu(!openMenu)}>
                         {openMenu ? <AiOutlineCloseCircle className="text-white" /> : <BiMenuAltRight className="text-white" />}
                     </div>
                 </div>
                 <ul
-                    className={`lg:!flex text-white gap-4 lg:items-center lg:bg-transparent bg-slate-700 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-left ${openMenu ? "flex text-white" : "hidden"
+                    className={`lg:!flex text-white gap-4 lg:items-center lg:bg-transparent bg-slate-700 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-center ${openMenu ? "flex text-white" : "hidden"
                         }`}
                 >
                     <Link to="/">Home</Link>
                     <Link to="/blogs">Blogs</Link>
                     
                     {user ? (
-                        <div className="flex lg:flex-row flex-col gap-4">
+                        <div className="flex items-center lg:flex-row flex-col text-left gap-4">
                             <Link to="/addItems">Add Items</Link>
                             <Link to="/manageItems">Manage Items</Link>
                             <Link to="/myItems">My Items</Link>
-                            <button onClick={handleSignOut}>
+                            <button className="border border-blue-600 rounded-md hover:bg-blue-600 px-2 duration-300 hover:scale-105" onClick={handleSignOut}>
                                 logout
                             </button>
                         </div>

@@ -25,14 +25,14 @@ const SimpleHeader = () => {
         });
     };
     return (
-        <section className='container mx-auto py-5 px-4 md:px-0 bg-white'>
+        <section className='container mx-auto py-5 px-4 md:px-0'>
             <nav className="lg:flex block lg:items-center lg:justify-between">
                 <div className="flex items-center justify-between lg:mb-0 mb-3">
                     <h2
                         className="md:text-3xl text-2xl cursor-pointer flex items-center gap-2"
                         onClick={() => path("/")}
                     >
-                        <FaCarSide className="text-yellow-600" /> <span className="text-yellow-600">vehicle-storehouse</span>
+                        <FaCarSide className="text-blue-600" /> <span className="text-blue-600 font-bold">vehicle-storehouse</span>
                     </h2>
                     <div className="lg:hidden text-3xl" onClick={() => setOpenMenu(!openMenu)}>
                         {openMenu ? <AiOutlineCloseCircle /> : <BiMenuAltRight />}
