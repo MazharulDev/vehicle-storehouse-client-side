@@ -16,21 +16,21 @@ const Choose = () => {
                         </div>
 
                         <h2 className='text-2xl my-3'>Wide range of brands</h2>
-                        <p>We can help with your financing plan, we can offer some tips and tricks. Drive off with this dream car of yours regardless of your credit history.</p>
+                        <p>I sell cars all over the world. No complaints have ever been received. Always try to give good products keeping in mind the buyer.</p>
                     </div>
                     <div className='p-8'>
                         <div className='flex justify-center mb-4'>
                             <VscWorkspaceTrusted className='text-green-500 text-5xl'></VscWorkspaceTrusted>
                         </div>
                         <h2 className='text-2xl my-3'>Trusted by our clients</h2>
-                        <p>We can help with your financing plan, we can offer some tips and tricks. Drive off with this dream car of yours regardless of your credit history.</p>
+                        <p>I see all the cars in my stock. So our reputation is always. You too can be an honorable buyer of this stock of mine.So have faith.</p>
                     </div>
                     <div className='p-8'>
                         <div className='flex justify-center mb-4'>
                             <MdOutlineMobileFriendly className='text-blue-500 text-5xl'></MdOutlineMobileFriendly>
                         </div>
                         <h2 className='text-2xl my-3'>Fast & easy financing</h2>
-                        <p>We can help with your financing plan, we can offer some tips and tricks. Drive off with this dream car of yours regardless of your credit history.</p>
+                        <p>I can help with your financing plan, we can offer some tips and tricks. Drive off with this dream car of yours regardless of your credit history.</p>
                     </div>
                 </div>
             </div>
