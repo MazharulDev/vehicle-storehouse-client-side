@@ -1,3 +1,6 @@
+import { async } from '@firebase/util';
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,15 +14,27 @@ const MyItems = () => {
     const navigate=useNavigate();
 
     useEffect(()=>{
-        const email=user?.email;
-        const url=`https://vehicle-storehouse.herokuapp.com/items?email=${email}`
-        fetch(url,{
-            headers:{
-                authorization:`Bearer ${localStorage.getItem('accessToken')}`
+        const getEmail=async()=>{
+            const email=user?.email;
+            const url=`https://vehicle-storehouse.herokuapp.com/items?email=${email}`
+            try{
+                const {data}=await axios.get(url,{
+                    headers:{
+                        authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setItems(data)
+
             }
-        })
-        .then(res=>res.json())
-        .then(data=>setItems(data))
+            catch(error){
+                console.log(error.message);
+                if(error.response.status===401||error.response.status===403){
+                    navigate('/login')
+                    signOut(auth);
+                }
+            }
+        }
+        getEmail()
     },[user])
 
     const handleDelete=(id)=>{
