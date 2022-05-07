@@ -17,14 +17,14 @@ const Footer = () => {
                 <div className='container mx-auto px-12 py-8 md:grid grid-cols-5'>
                     <div className='text-white col-span-1 sm:mt-4 md:mt-0'>
                         <h2 className='text-xl mb-4'>Information</h2>
-                        <Link className='block hover:underline hover:text-gray-300' to='/'>Our Contact</Link>
+                        <Link className='block hover:underline hover:text-gray-300' to='/'>Contact</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>About Us</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Privacy Policy</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>FAQ</Link>
                     </div>
                     <div className='text-white col-span-1 sm:mt-4 md:mt-0'>
                         <h2 className='text-xl mb-4'>Inventory</h2>
-                        <Link className='block hover:underline hover:text-gray-300' to='/'>by Makes</Link>
+                        <Link className='block hover:underline hover:text-gray-300' to='/addItems'>by Makes</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>by Body Style</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>by Price</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>by Mileage</Link>
@@ -32,8 +32,8 @@ const Footer = () => {
                     <div className='text-white col-span-1 sm:mt-4 md:mt-0'>
                         <h2 className='text-xl mb-4'>Useful Links</h2>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Home</Link>
-                        <Link className='block hover:underline hover:text-gray-300' to='/'>Our Blog</Link>
-                        <Link className='block hover:underline hover:text-gray-300' to='/'>Our Services</Link>
+                        <Link className='block hover:underline hover:text-gray-300' to='/blogs'>Blog</Link>
+                        <Link className='block hover:underline hover:text-gray-300' to='/inventory'>Services</Link>
                         <Link className='block hover:underline hover:text-gray-300' to='/'>Testimonials</Link>
                     </div>
                     <div className='text-white col-span-2 mt-4 md:mt-0'>
