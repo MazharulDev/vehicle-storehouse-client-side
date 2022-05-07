@@ -39,18 +39,18 @@ const Header = () => {
                     </div>
                 </div>
                 <ul
-                    className={`lg:!flex text-white gap-4 lg:items-center lg:bg-transparent bg-slate-700 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-center ${openMenu ? "flex text-white" : "hidden"
-                        }`}
+                    className={`text-white lg:!flex gap-4 lg:items-center lg:bg-transparent bg-blue-900 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-left ${openMenu ? "flex text-white" : "hidden"
+                }`}
                 >
                     <Link to="/">Home</Link>
                     <Link to="/blogs">Blogs</Link>
                     
                     {user ? (
-                        <div className="flex items-center lg:flex-row flex-col text-left gap-4">
+                        <div className="flex lg:flex-row flex-col gap-4">
                             <Link to="/addItems">Add Items</Link>
                             <Link to="/manageItems">Manage Items</Link>
                             <Link to="/myItems">My Items</Link>
-                            <button className="border border-blue-600 rounded-md hover:bg-blue-600 px-2 duration-300 hover:scale-105" onClick={handleSignOut}>
+                            <button onClick={handleSignOut}>
                                 logout
                             </button>
                         </div>

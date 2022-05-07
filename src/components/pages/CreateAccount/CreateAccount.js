@@ -52,6 +52,19 @@ const CreateAccount = () => {
         }
         await createUserWithEmailAndPassword(email,password);
         await updateProfile({displayName: name})
+        const url = `https://vehicle-storehouse.herokuapp.com/login`
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify({email})
+        })
+            .then(res => res.json())
+            .then(result => {
+                localStorage.setItem('accessToken',result.accessToken);
+                navigate(from,{replace:true});
+            })
     }
     if(userWithGoogle){
         toast("Login Successfully")

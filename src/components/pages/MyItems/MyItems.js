@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import MyItem from '../MyItem/MyItem';
@@ -8,10 +8,16 @@ import MyItem from '../MyItem/MyItem';
 const MyItems = () => {
     const [user]=useAuthState(auth);
     const [items,setItems]=useState([])
+    const navigate=useNavigate();
+
     useEffect(()=>{
         const email=user?.email;
         const url=`https://vehicle-storehouse.herokuapp.com/items?email=${email}`
-        fetch(url)
+        fetch(url,{
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
         .then(res=>res.json())
         .then(data=>setItems(data))
     },[user])
@@ -19,7 +25,6 @@ const MyItems = () => {
     const handleDelete=(id)=>{
         const proceed=window.confirm("Are you sure you want to delete?")
         if(proceed){
-            console.log("delete user with id",id);
             const url=`https://vehicle-storehouse.herokuapp.com/item/${id}`
             fetch(url,{
                 method:'DELETE'
@@ -43,7 +48,7 @@ const MyItems = () => {
             </Link>
             <div className='container md:grid grid-cols-3 gap-4 w-full mx-auto p-12'>
             {
-                items.map(item=><MyItem key={item._id} item={item} handleDelete={handleDelete}></MyItem>)
+                items?.map(item=><MyItem key={item._id} item={item} handleDelete={handleDelete}></MyItem>)
             }
             </div>
         </div>
