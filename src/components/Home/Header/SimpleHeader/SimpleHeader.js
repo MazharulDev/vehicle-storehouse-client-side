@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import {BiMenuAltRight} from 'react-icons/bi'
 import {AiOutlineCloseCircle} from 'react-icons/ai';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import {FaCarSide} from 'react-icons/fa';
 import auth from "../../../../firebase.init";
 import Loading from "../../../Loading/Loading";
+import CustomLink from "../../../CustomLink/CustomLink";
+
 
 const SimpleHeader = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -42,23 +44,23 @@ const SimpleHeader = () => {
                     className={`lg:!flex gap-4 lg:items-center lg:bg-transparent bg-blue-400 rounded-md lg:flex-row flex-col lg:p-0 p-3 text-left ${openMenu ? "flex text-white" : "hidden"
                         }`}
                 >
-                    <Link to="/">Home</Link>
-                    <Link to="/blogs">Blogs</Link>
-                    <Link to="/inventory">Inventory</Link>
+                    <CustomLink to="/">Home</CustomLink>
+                    <CustomLink to="/blogs">Blogs</CustomLink>
+                    <CustomLink to="/inventory">Inventory</CustomLink>
                     
                     {user ? (
                         <div className="flex lg:flex-row flex-col gap-4">
-                            <Link to="/addItems">Add Items</Link>
-                            <Link to="/manageItems">Manage Items</Link>
-                            <Link to="/myItems">My Items</Link>
+                            <CustomLink to="/addItems">Add Items</CustomLink>
+                            <CustomLink to="/manageItems">Manage Items</CustomLink>
+                            <CustomLink to="/myItems">My Items</CustomLink>
                             <button onClick={handleSignOut}>
                                 logout
                             </button>
                         </div>
                     ) : (
-                        <Link to='/login'>
+                        <CustomLink to='/login'>
                             Login
-                        </Link>
+                        </CustomLink>
                     )}
                 </ul>
             </nav>

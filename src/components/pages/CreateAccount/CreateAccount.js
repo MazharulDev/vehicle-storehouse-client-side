@@ -95,8 +95,8 @@ const CreateAccount = () => {
     return (
         <div>
             <SimpleHeader />
-            <div className='mt-4 w-4/5 md:w-2/5 mx-auto'>
-                <h2 className='text-4xl text-center my-5'>Create an account</h2>
+            <div className='container mt-4 w-96 mx-auto px-8 border-2 rounded-md'>
+                <h2 className='text-4xl text-center my-5 text-slate-600'>Create an account</h2>
                 <form onSubmit={handleSubmit}>
                     <input onChange={handleNameChange} className='border px-3 py-1 mb-3 w-full' type="text" name="name" placeholder='Enter Your full name' required />
                     <br />
@@ -107,10 +107,10 @@ const CreateAccount = () => {
                     <input onChange={handleConfirmPassword} className='border px-3 py-1 mb-3 w-full' type="password" name="password" placeholder='Enter Confirm password' required/>
                     <br />
                     <p className='text-red-600'>{error}</p>
-                    <input className='px-3 py-1 bg-gray-300 hover:bg-gray-400 cursor-pointer rounded-md w-full' type="submit" value="Sign Up" />
+                    <input className=' px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 cursor-pointer w-full' type="submit" value="Sign Up" />
                     <h2 className='my-5'>Have an account? <Link className='text-blue-600 hover:underline' to='/login'>Login</Link> </h2>
                 </form>
-                <button onClick={handleGoogleSignIn} className='flex justify-center items-center gap-6 w-full border rounded-full px-4 py-2 mt-5 hover:bg-slate-100'><FcGoogle></FcGoogle>Google with Sign in</button>
+                <button onClick={handleGoogleSignIn} className='flex justify-center items-center gap-6 w-full border rounded-full px-4 py-2 my-5 hover:bg-slate-100'><FcGoogle></FcGoogle>Google with Sign in</button>
             </div>
         </div>
     );

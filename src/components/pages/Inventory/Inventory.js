@@ -26,8 +26,8 @@ const Inventory = () => {
         e.preventDefault();
         const quantityNumber = e.target.number.value;
 
-        let count = parseInt(upCount) + parseInt(quantityNumber)
-        setUpCount(parseInt(upCount) + parseInt(quantityNumber))
+        let count = parseInt(upCount) + parseInt(quantityNumber);
+        setUpCount(parseInt(upCount) + parseInt(quantityNumber));
         const updateQuantity = { count };
         //send data to the server
         const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
@@ -69,7 +69,9 @@ const Inventory = () => {
     return (
         <div>
             <SimpleHeader />
-            
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold'>Update</h2>
+            </div>
             <div className='container mx-auto'>
                 <div className='lg:grid grid-cols-2 w-fit items-center gap-5 mx-auto p-8 border-2 border-blue-500 rounded-md bg-white mt-3'>
                     <div className='box-border overflow-hidden cursor-pointer'>
@@ -91,7 +93,7 @@ const Inventory = () => {
                             <div className='md:flex justify-between items-center mt-4'>
                                 <button onClick={handleDelivered} className='inline-block px-5 transition-all py-1 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-black cursor-pointer bg-blue-600'>Delivered</button>
                                 <form className='flex gap-4' onSubmit={handleAddQuantity}>
-                                    <input className='w-28 border border-black rounded px-2 py-1' type="number" name="number" placeholder='Quantity' />
+                                    <input className='w-28 border border-black rounded px-2 py-1' type="number" name="number" placeholder='Quantity' required/>
                                     <input className='inline-block px-5 transition-all py-1 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-black cursor-pointer bg-blue-600' type="submit" value="Add" />
                                 </form>
                             </div>
