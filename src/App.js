@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home/Home';
 import AddItems from './components/pages/AddItems/AddItems';
+import AllItems from './components/pages/AllItems/AllItems';
 import Blogs from './components/pages/Blogs/Blogs';
 import CreateAccount from './components/pages/CreateAccount/CreateAccount';
 import ForgotPassword from './components/pages/ForgotPassword/ForgotPassword';
@@ -40,6 +41,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs/>}></Route>
+        <Route path="inventory" element={<AllItems/>}></Route>
         <Route path='/createAccount' element={<CreateAccount/>}></Route>
 
 

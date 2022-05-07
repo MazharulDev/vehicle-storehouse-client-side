@@ -44,6 +44,7 @@ const SimpleHeader = () => {
                 >
                     <Link to="/">Home</Link>
                     <Link to="/blogs">Blogs</Link>
+                    <Link to="/inventory">Inventory</Link>
                     
                     {user ? (
                         <div className="flex lg:flex-row flex-col gap-4">
