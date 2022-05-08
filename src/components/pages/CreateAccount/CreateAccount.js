@@ -74,8 +74,14 @@ const CreateAccount = () => {
         toast("Create Account successfully")
 
     }
-    if(errorWithEmail|| errorWithGoogle){
-        toast(error?.message)
+    if(errorWithGoogle){
+        toast(errorWithGoogle?.message)
+    }
+    if(errorWithEmail){
+        toast(errorWithEmail?.message)
+    }
+    if(errorWithProfile){
+        toast(errorWithProfile?.message)
     }
     const handleGoogleSignIn=()=>{
         signInWithGoogle();

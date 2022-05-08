@@ -12,6 +12,7 @@ const Login = () => {
         signInWithEmailAndPassword,
         userWithEmail,
         loadingWithEmail,
+        errorWithEmail
     ] = useSignInWithEmailAndPassword(auth);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -77,6 +78,9 @@ const Login = () => {
     }
     if (errorWithGoogle) {
         toast(errorWithGoogle?.message)
+    }
+    if(errorWithEmail){
+        toast(errorWithEmail?.message)
     }
     return (
         <div>
