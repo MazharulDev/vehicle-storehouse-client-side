@@ -7,7 +7,7 @@ const ManageItem = ({ item, handleDelete }) => {
     const { _id, name, img, des, price, quantity, subName } = item;
     return (
         <div className='shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0 box-border overflow-hidden'>
-            <div className='box-border h-48 overflow-hidden cursor-pointer'>
+            <div className='box-border h-56 overflow-hidden cursor-pointer'>
                 <img className=' hover:scale-105 duration-300 h-full w-full' src={img} alt="" />
             </div>
             <div className=' px-8 py-5'>

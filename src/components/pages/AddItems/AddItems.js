@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import PageTitle from '../../../PageTitle/PageTitle';
+import Footer from '../../Home/Header/Footer/Footer';
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 
 
@@ -26,12 +28,13 @@ const AddItems = () => {
             })
     }
     return (
-        <div className='mb-5'>
+        <div>
             <SimpleHeader/>
+            <PageTitle title='Add Item'></PageTitle>
             <div className='flex justify-center'>
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-4'>Add Items</h2>
             </div>
-            <form className='w-4/5 md:w-2/5 mx-auto flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+            <form className='w-4/5 md:w-2/5 mx-auto flex flex-col gap-2 mb-10' onSubmit={handleSubmit(onSubmit)}>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("name", { required: true})} placeholder="Enter Car Name"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' {...register("img", { required: true})} placeholder="Enter Image link"/>
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' type="number" {...register("price",)} placeholder="Enter Car price"/>
@@ -41,6 +44,7 @@ const AddItems = () => {
                 <input className='border px-3 py-1 mb-3 w-full bg-gray-50' value={user?.email} type="email" {...register("email", { required: true})} placeholder="Enter your Email"/>
                 <input className='px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white cursor-pointer rounded-md w-full' type="submit" />
             </form>
+            <Footer/>
         </div>
     );
 };

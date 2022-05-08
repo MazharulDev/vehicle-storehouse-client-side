@@ -2,13 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../images/logo-1.png'
 import { BsApple } from 'react-icons/bs'
-import {FaGooglePlay} from 'react-icons/fa'
+import { FaGooglePlay } from 'react-icons/fa'
+import {FaFacebookSquare} from 'react-icons/fa'
+import {FaLinkedin} from 'react-icons/fa'
+import {FaGithubSquare} from 'react-icons/fa'
 const Footer = () => {
     return (
         <div className='bg-gray-900'>
             <div>
-                <div className='container mx-auto px-12 py-8'>
-                    <img src={logo} alt="" />
+                <div className='md:flex justify-between items-center container mx-auto px-12 py-8'>
+                    <div className='mb-4 md:mb-0'>
+                        <img src={logo} alt="" />
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <a href="https://web.facebook.com/miforbd/" rel='noreferrer' target='_blank'><FaFacebookSquare className='text-4xl text-white hover:scale-110 duration-300'></FaFacebookSquare></a>
+                        <a href="https://www.linkedin.com/in/miforbd/" rel='noreferrer' target='_blank'><FaLinkedin className='text-4xl text-white hover:scale-110 duration-300'></FaLinkedin></a>
+                        <a href="https://github.com/miforbd" rel='noreferrer' target='_blank'><FaGithubSquare className='text-4xl text-white hover:scale-110 duration-300'></FaGithubSquare></a>
+                        
+                    </div>
                 </div>
                 <div className='border-b-2 border-gray-800'>
 
@@ -40,26 +51,26 @@ const Footer = () => {
                         <h2 className='text-xl mb-4'>Join our growing community</h2>
                         <div className='md:flex items-center gap-2'>
                             <Link to='/'>
-                            <button className='bg-gray-300 rounded-lg text-black sm:block mb-2 md:mb-0 hover:bg-gray-600 hover:text-white duration-500'>
-                                <div className='flex items-center gap-4 p-2'>
-                                    <BsApple className='text-4xl'></BsApple>
-                                    <div>
-                                        <h4>Download on the</h4>
-                                        <h3 className='font-bold text-left'>App Store</h3>
+                                <button className='bg-gray-300 rounded-lg text-black sm:block mb-2 md:mb-0 hover:bg-gray-600 hover:text-white duration-500'>
+                                    <div className='flex items-center gap-4 p-2'>
+                                        <BsApple className='text-4xl'></BsApple>
+                                        <div>
+                                            <h4>Download on the</h4>
+                                            <h3 className='font-bold text-left'>App Store</h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
                             </Link>
                             <Link to='/'>
-                            <button className='bg-gray-300 rounded-lg text-black hover:bg-gray-600 hover:text-white duration-500'>
-                                <div className='flex items-center gap-4 p-2'>
-                                    <FaGooglePlay className='text-4xl'></FaGooglePlay>
-                                    <div>
-                                        <h4>Download on the</h4>
-                                        <h3 className='font-bold text-left'>App Store</h3>
+                                <button className='bg-gray-300 rounded-lg text-black hover:bg-gray-600 hover:text-white duration-500'>
+                                    <div className='flex items-center gap-4 p-2'>
+                                        <FaGooglePlay className='text-4xl'></FaGooglePlay>
+                                        <div>
+                                            <h4>Download on the</h4>
+                                            <h3 className='font-bold text-left'>App Store</h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
                             </Link>
                         </div>
                     </div>

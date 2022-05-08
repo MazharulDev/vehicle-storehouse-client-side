@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PageTitle from '../../../PageTitle/PageTitle';
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 
 const Inventory = () => {
@@ -69,6 +70,7 @@ const Inventory = () => {
     return (
         <div>
             <SimpleHeader />
+            <PageTitle title="Update"></PageTitle>
             <div className='flex justify-center'>
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold'>Update</h2>
             </div>

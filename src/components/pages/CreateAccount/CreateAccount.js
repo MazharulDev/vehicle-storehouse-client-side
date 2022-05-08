@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import PageTitle from '../../../PageTitle/PageTitle';
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import Loading from '../../Loading/Loading';
 
@@ -95,6 +96,7 @@ const CreateAccount = () => {
     return (
         <div>
             <SimpleHeader />
+            <PageTitle title="Create Account"></PageTitle>
             <div className='container mt-4 w-96 mx-auto px-8 border-2 rounded-md'>
                 <h2 className='text-4xl text-center my-5 text-slate-600'>Create an account</h2>
                 <form onSubmit={handleSubmit}>

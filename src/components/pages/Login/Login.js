@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import { toast } from 'react-toastify';
 import Loading from '../../Loading/Loading'
+import PageTitle from '../../../PageTitle/PageTitle';
 const Login = () => {
     const [
         signInWithEmailAndPassword,
@@ -80,6 +81,7 @@ const Login = () => {
     return (
         <div>
             <SimpleHeader />
+            <PageTitle title='Login'></PageTitle>
             <div className='container mt-4 w-96 mx-auto p-5 border-2 rounded-md'>
                 <div>
                     <h2 className='text-4xl text-center text-slate-600'>Login</h2>

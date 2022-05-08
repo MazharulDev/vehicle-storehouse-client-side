@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import PageTitle from '../../../PageTitle/PageTitle';
 import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import Loading from '../../Loading/Loading';
 
@@ -29,6 +30,7 @@ const ForgotPassword = () => {
     return (
         <div>
             <SimpleHeader />
+            <PageTitle title='Forgot Password'></PageTitle>
             <h2 className='text-center text-gray-500 text-4xl my-5'>Reset Password</h2>
             <div className='w-96 mx-auto mt-5 border-2 p-5'>
 
