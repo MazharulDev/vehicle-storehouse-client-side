@@ -33,7 +33,7 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password);
 
-        const url = `https://vehicle-storehouse.herokuapp.com/login`
+        const url = `https://vehicle-storehouse.up.railway.app/login`
         fetch(url, {
             method: "POST",
             headers: {
@@ -57,7 +57,7 @@ const Login = () => {
     }
     if (userWithGoogle) {
         const email = userWithGoogle.user.email;
-        const url = `https://vehicle-storehouse.herokuapp.com/login`
+        const url = `https://vehicle-storehouse.up.railway.app/login`
         fetch(url, {
             method: "POST",
             headers: {
@@ -79,7 +79,7 @@ const Login = () => {
     if (errorWithGoogle) {
         toast(errorWithGoogle?.message)
     }
-    if(errorWithEmail){
+    if (errorWithEmail) {
         toast(errorWithEmail?.message)
     }
     return (
@@ -102,7 +102,7 @@ const Login = () => {
                             <h2 className='my-3'><Link className='text-blue-600 hover:underline' to='/forgotPassword'>Forgot password?</Link></h2>
                         </div>
                         <input className=' px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 cursor-pointer w-full' type="submit" value="Login" />
-                        
+
                         <h2 className='my-5'>Don't have an account? <Link className='text-blue-600 hover:underline' to='/createAccount'>Create an Account</Link> </h2>
                     </form>
                     <button onClick={handleGoogleSignIn} className='flex justify-center items-center gap-6 w-full border rounded-full px-4 py-2 mt-5 hover:bg-slate-100'><FcGoogle></FcGoogle>Google with Sign in</button>

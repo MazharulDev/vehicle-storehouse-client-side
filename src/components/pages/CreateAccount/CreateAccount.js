@@ -11,92 +11,92 @@ import SimpleHeader from '../../Home/Header/SimpleHeader/SimpleHeader';
 import Loading from '../../Loading/Loading';
 
 const CreateAccount = () => {
-    const [name,setName]=useState('')
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const [confirmPassword,setConfirmPassword]=useState('');
-    const [error,setError]=useState('');
-    const location=useLocation();
-    const navigate=useNavigate()
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate()
     const [
         createUserWithEmailAndPassword,
         userWithEmail,
         loadingWithEmail,
         errorWithEmail,
-      ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
-      const [updateProfile, updating, errorWithProfile] = useUpdateProfile(auth)
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, errorWithProfile] = useUpdateProfile(auth)
     const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
-    const handleNameChange=e=>{
-        const name=e.target.value;
+    const handleNameChange = e => {
+        const name = e.target.value;
         setName(name);
     }
-    const handleEmailChange=e=>{
-        const email=e.target.value;
+    const handleEmailChange = e => {
+        const email = e.target.value;
         setEmail(email);
     }
-    const handlePasswordChange=e=>{
-        const password=e.target.value;
+    const handlePasswordChange = e => {
+        const password = e.target.value;
         setPassword(password);
     }
-    const handleConfirmPassword=e=>{
-        const confirmPassword=e.target.value;
+    const handleConfirmPassword = e => {
+        const confirmPassword = e.target.value;
         setConfirmPassword(confirmPassword);
     }
-    const handleSubmit=async e=>{
+    const handleSubmit = async e => {
         e.preventDefault();
-        if(password !== confirmPassword){
+        if (password !== confirmPassword) {
             setError('Two password did not match')
             return;
         }
-        if(password<5){
+        if (password < 5) {
             setError("Password must 6 character")
         }
-        await createUserWithEmailAndPassword(email,password);
-        await updateProfile({displayName: name})
-        const url = `https://vehicle-storehouse.herokuapp.com/login`
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name })
+        const url = `https://vehicle-storehouse.up.railway.app/login`
         fetch(url, {
             method: "POST",
             headers: {
                 "content-type": 'application/json'
             },
-            body: JSON.stringify({email})
+            body: JSON.stringify({ email })
         })
             .then(res => res.json())
             .then(result => {
-                localStorage.setItem('accessToken',result.accessToken);
-                navigate(from,{replace:true});
+                localStorage.setItem('accessToken', result.accessToken);
+                navigate(from, { replace: true });
             })
     }
-    if(userWithGoogle){
+    if (userWithGoogle) {
         toast("Login Successfully")
     }
-    if(userWithEmail){
+    if (userWithEmail) {
         toast("Create Account successfully")
 
     }
-    if(errorWithGoogle){
+    if (errorWithGoogle) {
         toast(errorWithGoogle?.message)
     }
-    if(errorWithEmail){
+    if (errorWithEmail) {
         toast(errorWithEmail?.message)
     }
-    if(errorWithProfile){
+    if (errorWithProfile) {
         toast(errorWithProfile?.message)
     }
-    const handleGoogleSignIn=()=>{
+    const handleGoogleSignIn = () => {
         signInWithGoogle();
     }
 
-    let from=location.state?.from?.pathname||'/';
-    if(userWithGoogle || userWithEmail){
+    let from = location.state?.from?.pathname || '/';
+    if (userWithGoogle || userWithEmail) {
         setTimeout(() => {
-            navigate(from,{replace:true});
+            navigate(from, { replace: true });
         }, 1500);
     }
-    if(errorWithGoogle){
+    if (errorWithGoogle) {
         toast(errorWithGoogle?.message);
     }
-    if(loadingWithGoogle || loadingWithEmail||updating){
+    if (loadingWithGoogle || loadingWithEmail || updating) {
         return <Loading></Loading>
     }
     return (
@@ -110,9 +110,9 @@ const CreateAccount = () => {
                     <br />
                     <input onChange={handleEmailChange} className='border px-3 py-1 mb-3 w-full' type="email" name="email" placeholder='Enter Your Email Address' required />
                     <br />
-                    <input onChange={handlePasswordChange} className='border px-3 py-1 mb-3 w-full' type="password" name="password" placeholder='Enter password' required/>
+                    <input onChange={handlePasswordChange} className='border px-3 py-1 mb-3 w-full' type="password" name="password" placeholder='Enter password' required />
                     <br />
-                    <input onChange={handleConfirmPassword} className='border px-3 py-1 mb-3 w-full' type="password" name="password" placeholder='Enter Confirm password' required/>
+                    <input onChange={handleConfirmPassword} className='border px-3 py-1 mb-3 w-full' type="password" name="password" placeholder='Enter Confirm password' required />
                     <br />
                     <p className='text-red-600'>{error}</p>
                     <input className=' px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 cursor-pointer w-full' type="submit" value="Sign Up" />

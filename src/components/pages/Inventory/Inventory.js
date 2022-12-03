@@ -16,7 +16,7 @@ const Inventory = () => {
     }, [quantity])
 
     useEffect(() => {
-        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setItem(data))
@@ -31,7 +31,7 @@ const Inventory = () => {
         setUpCount(parseInt(upCount) + parseInt(quantityNumber));
         const updateQuantity = { count };
         //send data to the server
-        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -53,7 +53,7 @@ const Inventory = () => {
         const count = parseInt(upCount) - parseInt(1)
         const updateDelivery = { count }
         //send data to the server
-        const url = `https://vehicle-storehouse.herokuapp.com/item/${id}`
+        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -95,7 +95,7 @@ const Inventory = () => {
                             <div className='md:flex justify-between items-center mt-4'>
                                 <button onClick={handleDelivered} className='inline-block px-5 transition-all py-1 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-black cursor-pointer bg-blue-600'>Delivered</button>
                                 <form className='flex gap-4' onSubmit={handleAddQuantity}>
-                                    <input className='w-28 border border-black rounded px-2 py-1' type="number" name="number" placeholder='Quantity' required/>
+                                    <input className='w-28 border border-black rounded px-2 py-1' type="number" name="number" placeholder='Quantity' required />
                                     <input className='inline-block px-5 transition-all py-1 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-black cursor-pointer bg-blue-600' type="submit" value="Add" />
                                 </form>
                             </div>
