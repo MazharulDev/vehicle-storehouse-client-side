@@ -14,7 +14,7 @@ const ManageItems = () => {
         const proceed = window.confirm("Are you sure you want to delete?")
         if (proceed) {
             console.log("delete user with id", id);
-            const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
+            const url = `${process.env.REACT_APP_SERVER_LINK}/item/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

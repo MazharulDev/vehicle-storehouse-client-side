@@ -53,7 +53,7 @@ const CreateAccount = () => {
         }
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name })
-        const url = `https://vehicle-storehouse.up.railway.app/login`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/login`
         fetch(url, {
             method: "POST",
             headers: {

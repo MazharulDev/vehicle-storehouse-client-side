@@ -33,7 +33,7 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password);
 
-        const url = `https://vehicle-storehouse.up.railway.app/login`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/login`
         fetch(url, {
             method: "POST",
             headers: {
@@ -57,7 +57,7 @@ const Login = () => {
     }
     if (userWithGoogle) {
         const email = userWithGoogle.user.email;
-        const url = `https://vehicle-storehouse.up.railway.app/login`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/login`
         fetch(url, {
             method: "POST",
             headers: {

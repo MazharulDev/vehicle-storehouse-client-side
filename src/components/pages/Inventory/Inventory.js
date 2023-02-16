@@ -16,7 +16,7 @@ const Inventory = () => {
     }, [quantity])
 
     useEffect(() => {
-        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/item/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setItem(data))
@@ -31,7 +31,7 @@ const Inventory = () => {
         setUpCount(parseInt(upCount) + parseInt(quantityNumber));
         const updateQuantity = { count };
         //send data to the server
-        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/item/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -53,7 +53,7 @@ const Inventory = () => {
         const count = parseInt(upCount) - parseInt(1)
         const updateDelivery = { count }
         //send data to the server
-        const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/item/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {

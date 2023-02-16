@@ -12,7 +12,7 @@ const AddItems = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        const url = `https://vehicle-storehouse.up.railway.app/item`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/item`
         fetch(url, {
             method: "POST",
             headers: {

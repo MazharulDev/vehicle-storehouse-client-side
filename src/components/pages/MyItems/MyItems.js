@@ -17,7 +17,7 @@ const MyItems = () => {
     useEffect(() => {
         const getEmail = async () => {
             const email = user?.email;
-            const url = `https://vehicle-storehouse.up.railway.app/items?email=${email}`
+            const url = `${process.env.REACT_APP_SERVER_LINK}/items?email=${email}`
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -41,7 +41,7 @@ const MyItems = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure you want to delete?")
         if (proceed) {
-            const url = `https://vehicle-storehouse.up.railway.app/item/${id}`
+            const url = `${process.env.REACT_APP_SERVER_LINK}/item/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
